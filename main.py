@@ -1,9 +1,12 @@
 import cv2
+import glob
 
-img = cv2.imread("image.jpg", 0)
-img = cv2.resize(img, (int(img.shape[1]/2),int(img.shape[0]/2)))
+images=glob.glob("*.jpg")
 
-cv2.imshow("Days Gone", img)
-cv2.imwrite("Days Gone Grayscale.jpg", img)
-cv2.waitKey(5000)
-cv2.destroyAllWindows
+for image in images:
+    img=cv2.imread(image,0)
+    re=cv2.resize(img,(100,100))
+    cv2.imshow("Hey",re)
+    cv2.waitKey(500)
+    cv2.destroyAllWindows()
+    cv2.imwrite("resized_"+image,re)
